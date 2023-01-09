@@ -71,6 +71,7 @@ const defaults = {
     EditFullPage: false,
     EditUpdateCards: false,
     InlineEditV2: false,
+    PopoutCard: false,
     /* new component flags here - comment used by generate CLI */
   },
 

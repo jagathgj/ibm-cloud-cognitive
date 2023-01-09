@@ -1,0 +1,97 @@
+//
+// Copyright IBM Corp. 2022, 2022
+//
+// This source code is licensed under the Apache-2.0 license found in the
+// LICENSE file in the root directory of this source tree.
+//
+
+@import '../../global/styles/project-settings';
+
+
+@import './index';
+// shared card styles can be found in the Card folder
+@import '../Card/storybook-styles';
+
+$block-class: #{$pkg-prefix}--card;
+$popout-block-class: #{$pkg-prefix}--popout-card;
+
+// aspect ratio box styling
+.card-story .#{$carbon-prefix}--aspect-ratio {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: $ui-03;
+}
+
+.#{$block-class}__media-left .#{$block-class}__media {
+  width: 100%;
+  max-width: 300px;
+}
+
+.#{$popout-block-class}__dummy-children{
+  display: grid;
+  height: 100%;
+  grid-template-rows: auto auto 1fr;
+  &.#{$popout-block-class}__dummy-children-bottom{
+    grid-template-rows: 1fr;
+  }
+}
+
+.#{$popout-block-class}__dummy-children-heading{
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 22px;
+  letter-spacing: -0.02em;
+  text-align: left;
+  padding-bottom: 1rem;
+}
+
+.#{$popout-block-class}__dummy-children-list{
+  display: flex;
+  justify-content: space-between;
+  padding-top: 1rem;
+  .#{$popout-block-class}__dummy-children-bottom &{
+    align-items: flex-end;
+  }
+}
+
+.#{$popout-block-class}__dummy-children-icon{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12.5px 9px;
+  border: 1px solid #E0E0E0;
+  border-radius: 8px;
+  height: 48px;
+  width: 48px;
+  img{
+    width: 100%;
+    display: flex;
+    max-width: 30px;
+  }
+}
+
+.#{$popout-block-class}__dummy-children-tag{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+  background: #E0E0E0;
+  border-radius: 24px;
+  max-height: 18px;
+  font-weight: 400;
+  font-size: 12px;
+  letter-spacing: 0.32px;
+  color: #161616;
+  line-height: 1;
+  margin-bottom: 0.75rem;
+}
+
+// .#{$popout-block-class}__popout-content-dummy{
+//   color: inherit;
+// }
+
+.#{$popout-block-class}__gradient .#{$popout-block-class}__popout-content-dummy{
+  color: white;
+}
+

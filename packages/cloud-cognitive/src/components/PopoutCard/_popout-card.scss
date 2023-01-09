@@ -1,0 +1,142 @@
+//
+// Copyright IBM Corp. 2022, 2022
+//
+// This source code is licensed under the Apache-2.0 license found in the
+// LICENSE file in the root directory of this source tree.
+//
+
+// Standard imports.
+@import '../../global/styles/project-settings';
+@import '../../global/styles/mixins';
+
+// PopoutCard uses the following Carbon components:
+// Card
+@import '../Card/card';
+
+// Define all component styles in a mixin which is then exported using
+// the Carbon import-once mechanism.
+@mixin popout-card {
+  // The block part of our conventional BEM class names (blockClass__E--M).
+  $block-class: #{$pkg-prefix}--popout-card;
+
+  .#{$block-class}__title {
+    @include carbon--type-style('productive-heading-03');
+  }
+
+  .#{$block-class}{
+    position: relative;
+    height: 100%;
+    .#{$pkg-prefix}--card {
+      background-color: $ui-background;
+      transition: transform $duration--slow-01, box-shadow $duration--slow-01, height $duration--slow-01;
+      @include carbon--motion(exit, expressive);
+    }
+    .#{$block-class}__popout-wrapper{
+      height: var(--cards-size-height);
+    }
+  }
+
+  .#{$block-class}__children {
+    padding: $spacing-03 0;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    // height: 100%;
+    min-height: calc($spacing-06 * 3);
+    & > *{
+      flex: 1;
+    }
+    &:empty{
+      display: none;
+    }
+  }
+
+
+  .#{$block-class}__hovered {
+    .#{$pkg-prefix}--card {
+      position: absolute;
+      z-index: 9999;
+      transform: scale(1.1);
+      box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+      transition: transform $duration--slow-01, box-shadow $duration--slow-01, height $duration--slow-01;
+      @include carbon--motion(entrance, expressive);
+    }
+  }
+
+  .#{$block-class}__popout-content{
+    padding: 0;
+    opacity: 0;
+    height: 0;
+    visibility: hidden;
+    transition: height $duration--slow-01, padding $duration--slow-01, visibility $duration--slow-01, opacity $duration--slow-01;
+    @include carbon--motion(exit, expressive);
+    overflow: hidden;
+    .#{$block-class}__hovered &{
+      height: auto;
+      opacity: 1;
+      flex: 1;
+      visibility: visible;
+      padding: $spacing-05 0 $spacing-03 0;
+      transition: opacity $duration--slow-01, height $duration--slow-01, padding $duration--slow-01, visibility $duration--slow-01;
+      @include carbon--motion(entrance, expressive);
+      overflow: auto;
+    }
+  }
+
+  .#{$block-class}__gradient {
+
+    .#{$block-class}__children{
+      color: $ui-background;
+    }
+
+    .#{$pkg-prefix}--card__footer button:not(.bx--btn--primary) {
+      color: $ui-background;
+      &:hover {
+        color: $link-01;
+      }
+    }
+
+    .#{$pkg-prefix}--card__title {
+      color: $ui-background;
+    }
+
+    .#{$pkg-prefix}--card__label {
+      color: $ui-background;
+    }
+
+    .#{$pkg-prefix}--card__pictogram path {
+      fill: $ui-background;
+    }
+
+    .#{$pkg-prefix}--card__icon {
+      color: $ui-background;
+    }
+
+    .#{$pkg-prefix}--card__footer button.bx--btn--primary {
+      background-color: $ui-background;
+      color: $link-01;
+      &:hover {
+        background-color: #e8e8e8;
+        color: $link-01;
+      }
+    }
+  }
+
+  .#{$block-class} .#{$pkg-prefix}--card__footer {
+    justify-content: space-between;
+  }
+
+  .#{$block-class} .#{$pkg-prefix}--card__actions {
+    padding-top: 1rem;
+  }
+
+  .#{$block-class} .#{$block-class}__popout-wrapper{
+    display: flex;
+  }
+}
+
+
+
+@include exports('popout-card') {
+  @include popout-card;
+}
